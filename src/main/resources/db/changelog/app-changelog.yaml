@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: classpath:/db/changelog/scripts/V1.1_init_tables.sql
+  - include:
+      file: classpath:/db/changelog/scripts/V1.1_insert_music_artists.sql
+  - include:
+      file: classpath:/db/changelog/scripts/V1.1_insert_music_genres.sql

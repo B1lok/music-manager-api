@@ -1,0 +1,72 @@
+[
+  {
+    "title": "Heart of Gold",
+    "artistName": "Beyonce",
+    "duration": 200,
+    "releaseDate":"2024-04-01",
+    "genresNames":["R&B", "Pop"]
+  },
+  {
+    "title": "Castle on the Hill",
+    "artistName": "Ed Sheeran",
+    "duration": 241,
+    "releaseDate":"2024-04-02",
+    "genresNames":["Pop", "Folk"]
+  },
+  {
+    "title": "Love Story",
+    "artistName": "Taylor Swift",
+    "duration": 230,
+    "releaseDate":"2024-04-03",
+    "genresNames":["Country", "Pop"]
+  },
+  {
+    "title": "Dynamite",
+    "artistName": "BTS",
+    "duration": 210,
+    "releaseDate":"2024-04-04",
+    "genresNames":["K-pop", "EDM"]
+  },
+  {
+    "title": "God's Plan",
+    "artistName": "Drake",
+    "duration": 198,
+    "releaseDate":"2024-04-05",
+    "genresNames":["Hip hop", "Rap"]
+  },
+  {
+    "title": "Diamonds",
+    "artistName": "Rihanna",
+    "duration": 217,
+    "releaseDate":"2024-04-06",
+    "genresNames":["R&B", "Pop"]
+  },
+  {
+    "title": "Sorry",
+    "artistName": "Justin Bieber",
+    "duration": 200,
+    "releaseDate":"2024-04-07",
+    "genresNames":["Pop", "Dance"]
+  },
+  {
+    "title": "Thank U, Next",
+    "artistName": "Ariana Grande",
+    "duration": 207,
+    "releaseDate":"2024-04-08",
+    "genresNames":["Pop", "R&B"]
+  },
+  {
+    "title": "Blinding Lights",
+    "artistName": "The Weeknd",
+    "duration": 200,
+    "releaseDate":"2024-04-09",
+    "genresNames":["Pop", "R&B"]
+  },
+  {
+    "title": "Hello",
+    "artistName": "Adele",
+    "duration": 245,
+    "releaseDate":"2024-04-10",
+    "genresNames":["Pop", "Soul"]
+  }
+]

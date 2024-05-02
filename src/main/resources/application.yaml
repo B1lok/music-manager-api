@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: music-manager-api
+  datasource:
+    url: jdbc:postgresql://localhost:5432/music_manager
+    password: postgres
+    username: postgres
+  liquibase:
+    change-log: classpath:/db/changelog/app-changelog.yaml
+  jpa:
+    show-sql: true
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
