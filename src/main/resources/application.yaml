@@ -12,3 +12,11 @@ spring:
     open-in-view: false
     hibernate:
       ddl-auto: update
+  kafka:
+    consumer:
+      group-id: uniqueGroupId
+    bootstrap-servers: localhost:9092
+kafka:
+  recipientEmail: bilokur915@gmail.com
+  topic:
+    letterReceived: lettersTopic

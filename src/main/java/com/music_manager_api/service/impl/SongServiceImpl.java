@@ -10,9 +10,11 @@ import com.music_manager_api.exception.ArtistNotFoundException;
 import com.music_manager_api.exception.GenreNotFoundException;
 import com.music_manager_api.exception.SongNotFoundException;
 import com.music_manager_api.repository.SongRepository;
+import com.music_manager_api.sender.LetterSender;
 import com.music_manager_api.service.ArtistService;
 import com.music_manager_api.service.GenreService;
 import com.music_manager_api.service.SongService;
+import com.music_manager_api.web.dto.letter.LetterDto;
 import com.music_manager_api.web.dto.song.*;
 import com.music_manager_api.web.mapper.SongMapper;
 import com.opencsv.CSVWriter;
@@ -23,6 +25,7 @@ import jakarta.validation.Validator;
 import java.io.IOException;
 import java.util.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -39,19 +42,24 @@ public class SongServiceImpl implements SongService {
   private final ArtistService artistService;
 
   private final SongRepository songRepository;
+  private final LetterSender letterSender;
 
   private final Validator validator;
 
   private final SongMapper songMapper;
 
   private final GenreService genreService;
+  @Value("${kafka.recipientEmail}")
+  private String letterRecipient;
 
   @Override
   @Transactional
   public Song create(Song song, Set<String> genres, Long artistId) {
     setArtist(song, artistId);
     addGenresToSong(song, genres);
-    return songRepository.save(song);
+    Song newSong = songRepository.save(song);
+    letterSender.sendMessage(getLetterDto(newSong));
+    return newSong;
   }
 
   @Override
@@ -87,6 +95,14 @@ public class SongServiceImpl implements SongService {
         .successfullyAdded(successfullyUploaded)
         .failedToAdd(skipped)
         .errorMessages(errorMessages)
+        .build();
+  }
+
+  private LetterDto getLetterDto(Song song) {
+    return LetterDto.builder()
+        .content("Song with title - %s, was added".formatted(song.getTitle()))
+        .subject("New %s song".formatted(song.getArtist().getName()))
+        .recipient(letterRecipient)
         .build();
   }
 
